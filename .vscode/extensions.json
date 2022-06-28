@@ -1,6 +1,8 @@
 {
   "recommendations": [
     "editorconfig.editorconfig",
-    "codezombiech.gitignore"
+    "codezombiech.gitignore",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
   ]
 }
