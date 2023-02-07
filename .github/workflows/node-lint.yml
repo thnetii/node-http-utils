@@ -1,33 +1,33 @@
-name: CI
+name: Code Validation
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
   workflow_dispatch: {}
 
 jobs:
-  tsc:
-    name: TypeScript check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - uses: thnetii/gh-actions/src/add-matcher-npm@main
-      - name: npm install
-        run: npm ci -workspaces --include-workspace-root
-      - name: npm run lint:tsc
-        run: npm run lint:tsc
-
-  eslint:
-    name: ESLint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - uses: thnetii/gh-actions/src/add-matcher-npm@main
-      - name: npm install
-        run: npm ci -workspaces --include-workspace-root
-      - name: npm run lint:eslint
-        run: npm run lint:eslint
+  nodejs:
+    name: Node.js
+    uses: thnetii/.github/.github/workflows/nodejs-code-validation.yml@main
+    with:
+      checkout-parameters: >
+        {
+          "submodules": true
+        }
+      npm-install-check-enable: true
+      npm-install-arguments: >
+        [
+          "--workspaces",
+          "--include-workspace-root"
+        ]
+      tsc-check-enable: true
+      tsc-parameters: >
+        {
+          "arguments": "--noEmit\n-p\n./jsconfig.json"
+        }
+      eslint-check-enable: true
+      prettier-check-enable: true

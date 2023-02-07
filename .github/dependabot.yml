@@ -5,10 +5,16 @@ updates:
     schedule:
       interval: daily
     reviewers:
-      - '@thnetii/organization'
+      - 'thnetii/organization'
+  - package-ecosystem: gitsubmodule
+    directory: /
+    schedule:
+      interval: daily
+    reviewers:
+      - 'thnetii/organization'
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: daily
     reviewers:
-      - '@thnetii/organization'
+      - 'thnetii/organization'
