@@ -1,0 +1,22 @@
+{
+  "name": "@thnetii/http-header-utils",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thnetii/node-http-utils.git",
+    "directory": "src/http-header-utils"
+  },
+  "author": {
+    "name": "TH-NETII Rasch Solutions",
+    "url": "https://thnetii.td.org.uit.no",
+    "email": "fredrik.rasch@gmail.com"
+  },
+  "maintainers": [
+    "Fredrik Høisæther Rasch <fredrik.rasch@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thnetii/node-http-utils/issues"
+  },
+  "homepage": "https://github.com/thnetii/node-http-utils#readme"
+}
