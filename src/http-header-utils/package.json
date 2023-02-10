@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/thnetii/node-http-utils/issues"
   },
-  "homepage": "https://github.com/thnetii/node-http-utils#readme"
+  "homepage": "https://github.com/thnetii/node-http-utils#readme",
+  "engines": {
+    "node": ">= 12"
+  }
 }
