@@ -60,7 +60,9 @@ export type HttpHeaderKeyValuePairListTokenNode = {
   trivia?: HttpHeaderKeyValuePairTokenTrivia;
 };
 
-export type HttpHeaderKeyValuePairListQuotedNode<TQuote extends "'" | '"' = '"' | "'"> = {
+export type HttpHeaderKeyValuePairListQuotedNode<
+  TQuote extends "'" | '"' = '"' | "'"
+> = {
   type: 'quoted';
   value: string;
   trivia?: HttpHeaderKeyValuePairQuotedTrivia<TQuote>;
@@ -79,14 +81,21 @@ export type HttpHeaderKeyValuePairListInfixSeparatorNode = {
 };
 
 export type HttpHeaderKeyValuePairSemantic = {
-  key: HttpHeaderKeyValuePairListTokenNode | HttpHeaderKeyValuePairListQuotedNode;
+  key:
+    | HttpHeaderKeyValuePairListTokenNode
+    | HttpHeaderKeyValuePairListQuotedNode;
   equals: HttpHeaderKeyValuePairListInfixSeparatorNode;
-  value?: HttpHeaderKeyValuePairListTokenNode | HttpHeaderKeyValuePairListQuotedNode | undefined;
-}
+  value?:
+    | HttpHeaderKeyValuePairListTokenNode
+    | HttpHeaderKeyValuePairListQuotedNode
+    | undefined;
+};
 
 export type HttpHeaderValueOnlySemantic = {
-  value: HttpHeaderKeyValuePairListTokenNode | HttpHeaderKeyValuePairListQuotedNode;
-}
+  value:
+    | HttpHeaderKeyValuePairListTokenNode
+    | HttpHeaderKeyValuePairListQuotedNode;
+};
 
 export type HttpHeaderKeyValuePairListItemSemantic = {
   trailingSeparator?: HttpHeaderKeyValuePairListItemSeparatorNode;
