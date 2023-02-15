@@ -5,7 +5,13 @@ module.exports = {
    *  includeTrivia?: boolean;
    * } | undefined} [options]
    */
-  parse(text, options) {
+  parseSemantic(text, options) {
+    if (typeof text === 'undefined') return undefined;
+    // eslint-disable-next-line no-param-reassign
+    if (text === null) text = '';
+    // eslint-disable-next-line no-param-reassign
+    else if (typeof text !== 'string') text = `${text}`;
+
     const tokenRegexp = /(?<lead_ws>\s*)(?<token>[^"=,;\s]+)(?<trail_ws>\s*)/uy;
     const quoteRegexp =
       /(?<lead_ws>\s*)(?<pre_quote>")(?<content>(?:[^\\"]+|\\.)*)(?<end_quote>")(?<trail_ws>\s*)/uy;
@@ -223,5 +229,54 @@ module.exports = {
 
     if (list.length) return list;
     return undefined;
+  },
+
+  /**
+   * @param {string} text
+   * @returns {(
+   *  {key: string; value: string | undefined;} | {value: string;}
+   * )[] | undefined}
+   */
+  parse(text) {
+    const { parseSemantic } = module.exports;
+    return parseSemantic(text)?.map((s) =>
+      'key' in s
+        ? { key: s.key.value, value: s.value?.value }
+        : { value: s.value.value }
+    );
+  },
+
+  /**
+   * @param {string} text
+   * @returns {Record<string, string | undefined> | undefined}
+   */
+  parseObject(text) {
+    const { parse } = module.exports;
+    const semantics = parse(text);
+    if (typeof semantics === 'undefined') return undefined;
+    return Object.fromEntries(
+      semantics.map((s) => ('key' in s ? [s.key, s.value] : ['$', s.value]))
+    );
+  },
+
+  /**
+   * @param {string} text
+   * @returns {{value: string | undefined; parameters: Record<string, string | undefined>} | undefined}
+   */
+  parseValueWithParameters(text) {
+    const { parse } = module.exports;
+    const parts = parse(text);
+    if (typeof parts === 'undefined') return undefined;
+    const valueParts = [];
+    /** @type {[string, string | undefined][]} */
+    const paramParts = [];
+    for (const part of parts) {
+      if ('key' in part) paramParts.push([part.key, part.value]);
+      else valueParts.push(part.value);
+    }
+    return {
+      value: valueParts.join(' '),
+      parameters: Object.fromEntries(paramParts),
+    };
   },
 };
