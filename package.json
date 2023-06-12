@@ -28,7 +28,7 @@
     "lint:eslint": "eslint -c ./.eslintrc.yml ."
   },
   "devDependencies": {
-    "@thnetii/eslint-config-node-base": ".submodules/GitHub/thnetii/eslint-config/src/eslint-config-node-base",
+    "@thnetii/eslint-config-node-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?8425c1a",
     "@tsconfig/node16": "^1.0.4",
     "@tsconfig/strictest": "^2.0.1",
     "eslint": "^8.41.0",
