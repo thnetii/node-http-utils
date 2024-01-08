@@ -25,7 +25,9 @@
   "scripts": {
     "lint": "npm-run-all --continue-on-error lint:*",
     "lint:tsc": "tsc --noEmit -p ./jsconfig.json",
-    "lint:eslint": "eslint -c ./.eslintrc.yml ."
+    "lint:eslint": "eslint -c ./.eslintrc.yml .",
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --check ."
   },
   "devDependencies": {
     "@thnetii/eslint-config-node-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?882fc4f",
