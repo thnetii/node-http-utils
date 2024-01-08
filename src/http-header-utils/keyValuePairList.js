@@ -242,7 +242,7 @@ module.exports = {
     return parseSemantic(text)?.map((s) =>
       'key' in s
         ? { key: s.key.value, value: s.value?.value }
-        : { value: s.value.value }
+        : { value: s.value.value },
     );
   },
 
@@ -255,7 +255,7 @@ module.exports = {
     const semantics = parse(text);
     if (typeof semantics === 'undefined') return undefined;
     return Object.fromEntries(
-      semantics.map((s) => ('key' in s ? [s.key, s.value] : ['$', s.value]))
+      semantics.map((s) => ('key' in s ? [s.key, s.value] : ['$', s.value])),
     );
   },
 
