@@ -28,12 +28,12 @@
     "lint:eslint": "eslint -c ./.eslintrc.yml ."
   },
   "devDependencies": {
-    "@thnetii/eslint-config-node-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?8425c1a",
-    "@tsconfig/node16": "^16",
+    "@thnetii/eslint-config-node-base": "https://gitpkg.now.sh/thnetii/eslint-config/src/eslint-config-node-base?882fc4f",
+    "@tsconfig/node20": "^20",
     "@tsconfig/strictest": "^2.0.2",
     "eslint": "^8.52.0",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8",
+    "prettier": "^3.1",
     "typescript": "^5"
   }
 }
